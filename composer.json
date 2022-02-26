@@ -1,0 +1,21 @@
+{
+    "name": "ryne/laraver-starter",
+    "description": "Laravel helper methods",
+    "type": "library",
+    "license": "dev-master",
+    "autoload": {
+        "psr-4": {
+            "Ryne\\LaraverStarter\\": "src/"
+        },
+        "files": [
+            "src/Helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Dan",
+            "email": "act.dcisneros@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
