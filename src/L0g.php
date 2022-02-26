@@ -1,5 +1,5 @@
 <?php
-namespace Ryne\LaravelStarter\L0g;
+namespace RyneLaraverStarter\L0g;
 
 class L0g
 {
