@@ -1,5 +1,5 @@
 <?php
-namespace Ryne\LaraverStarter\DBHelper;
+namespace Ryne\LaravelStarter\DBHelper;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
