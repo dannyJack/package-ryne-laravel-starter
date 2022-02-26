@@ -25,7 +25,7 @@ class L0g
     public static function info($message, ...$params)
     {
         $message = self::constructMessage(self::TYPE_INFO, $message, $params);
-        self::out(self::TYPE_INFO, $message);
+        \Log::info($message);
     }
 
     /**
@@ -37,54 +37,7 @@ class L0g
     public static function error($message, ...$params)
     {
         $message = self::constructMessage(self::TYPE_ERROR, $message, $params);
-        self::out(self::TYPE_ERROR, $message);
-    }
-    
-    /**
-     * L0g::out($type, $message)
-     * output logs information/error messages
-     *
-     * @param L0g::TYPE_ (String) $type
-     * @param String $message
-     */
-    private static function out($type, $message)
-    {
-        $newFile = false;
-
-        $logPath = GLOBAL_SERVER_STORAGE_PATH;
-        if (!file_exists($logPath)) {
-            mkdir($logPath, 0777);
-        }
-        $logPath = GLOBAL_SERVER_STORAGE_PATH . 'logs';
-        if (!file_exists($logPath)) {
-            mkdir($logPath, 0777);
-        }
-
-        $filePath = $logPath . '/' . date('Y-m-d') . '.txt';
-        if (!file_exists($filePath)) {
-            $newFile = true;
-            $myfile = fopen($filePath, "w");
-            fclose($myfile);
-        }
-
-        $myfile = fopen($filePath, "a") or die("Unable to open file!");
-        if (!is_string($message) && !is_bool($message) && !is_numeric($message)) {
-            $message = json_encode($message);
-        }
-        if ($type == self::TYPE_INFO) {
-            $type = 'INFO';
-        } elseif ($type == self::TYPE_ERROR) {
-            $type = 'ERROR';
-        }
-
-        $message = date('Y/m/d H:i:s') . " " . $type . ": " . $message;
-        if ($newFile) {
-            fwrite($myfile, $message);
-        } else {
-            fwrite($myfile, "\n". $message);
-        }
-
-        fclose($myfile);
+        \Log::info($message);
     }
     
     /**
