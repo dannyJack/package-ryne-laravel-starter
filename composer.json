@@ -17,5 +17,6 @@
             "email": "act.dcisneros@gmail.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "required": {}
 }
