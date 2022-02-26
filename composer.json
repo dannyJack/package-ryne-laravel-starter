@@ -2,7 +2,7 @@
     "name": "ryne/laraver-starter",
     "description": "Laravel helper methods",
     "type": "library",
-    "license": "dev-master",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Ryne\\LaraverStarter\\": "src/"
