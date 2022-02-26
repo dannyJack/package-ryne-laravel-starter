@@ -1,5 +1,4 @@
 <?php
-use Ryne\LaravelStarter\L0g;
 
 /**
  * _vers($urlFile, $onlyVersion)
