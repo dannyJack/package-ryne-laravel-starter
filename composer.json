@@ -1,5 +1,5 @@
 {
-    "name": "ryne/laraver-starter",
+    "name": "ryne/laravel-starter",
     "description": "Laravel helper methods",
     "type": "library",
     "license": "MIT",
