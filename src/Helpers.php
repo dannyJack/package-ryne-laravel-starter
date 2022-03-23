@@ -48,6 +48,22 @@ if (!function_exists('_trim')) {
 }
 
 /**
+ * _trimText($string, $limit, $withSuffix)
+ * Trim a string with limit characters & optional ellipsis (and remove html tags)
+ * 
+ * @param String $string - string to be trim
+ * @param Int $limit - the character limit for the string
+ * @param String/Bool $withSuffix - optional with suffix after the limit, can be set to False
+ * @return String
+ */
+if (!function_exists('_trimText')) {
+    function _trimText($string, $limit = 50, $withSuffix = '...') {
+        $string = strip_tags($string);
+        return _trim($string, $limit, $withSuffix);
+    }
+}
+
+/**
  * _isRoute($routename)
  * Check current route name
  * 
