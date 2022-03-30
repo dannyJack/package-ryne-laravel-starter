@@ -73,17 +73,23 @@ if (!function_exists('_trimText')) {
 if (!function_exists('_isRoute')) {
     function _isRoute($routeName = null)
     {
+        $rtn = '';
         $name = \Request::route()->action['as'];
+
         if (is_null($routeName)) {
-            return $name;
+            $rtn = $name;
         } else {
             if (!empty($name)) {
-                if ($name == $routeName) {
-                    return 'active';
+                if (is_array($routeName)) {
+                    if (in_array($name, $routeName)) {
+                        $rtn = 'active';
+                    }
+                } elseif ($name == $routeName) {
+                    $rtn = 'active';
                 }
             }
-        
-            return '';
         }
+
+        return $rtn;
     }
 }
