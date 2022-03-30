@@ -83,14 +83,16 @@ class L0g
         }
         
         if (!empty($debug_trace[1])) {
-            if (!empty($debug_trace[1]['file']) && !empty($debug_trace[1]['line'])) {
-                $_file = explode('/', $debug_trace[1]['file']);
-                $_file = end($_file);
-                $logMessage .= "***" . $_file;
-                if (!empty($debug_trace[2]['function'])) {
-                    $logMessage .= "@" . $debug_trace[2]['function'];
+            if (isset($debug_trace[1]['file'])) {
+                if (!empty($debug_trace[1]['file']) && !empty($debug_trace[1]['line'])) {
+                    $_file = explode('/', $debug_trace[1]['file']);
+                    $_file = end($_file);
+                    $logMessage .= "***" . $_file;
+                    if (!empty($debug_trace[2]['function'])) {
+                        $logMessage .= "@" . $debug_trace[2]['function'];
+                    }
+                    $logMessage .= ':' . $debug_trace[1]['line'] . '***';
                 }
-                $logMessage .= ':' . $debug_trace[1]['line'] . '***';
             }
         }
 
@@ -215,7 +217,7 @@ class L0g
                         if ($ind > ($backTraceCount - 1)) {
                             break;
                         }
-                        $logMessage .= "\n\t\t" . $trace['file'];
+                        $logMessage .= "\n\t\t" . (isset($trace['file']) ? $trace['file'] : '');
                         if (!empty($trace['line'])) {
                             $logMessage .= '@' . $trace['line'];
                         }
