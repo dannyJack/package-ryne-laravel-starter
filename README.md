@@ -62,8 +62,10 @@ Sample usage:
 * info (L0g::info) - static method, use to make an information log in the storage folder, it uses the laravel \Log::class to output its log while this customize its output message
 
 Parameter:
-- String $message - message to be log
-- ...$params - will accept arrays and string as its value as an additional information about the log
+
+\- String $message - message to be log
+
+\- ...$params - will accept arrays and string as its value as an additional information about the log
 
 Return: void
 
@@ -74,8 +76,10 @@ Sample usage:
 * error (L0g::info) - static method, use to make an error log in the storage folder, it uses the laravel \Log::class to output its log while this customize its output message
 
 Parameter:
-- String $message - message to be log
-- ...$params - will accept arrays and string as its value as an additional information about the log
+
+\- String $message - message to be log
+
+\- ...$params - will accept arrays and string as its value as an additional information about the log
 
 Return: void
 
@@ -103,8 +107,10 @@ ________________________________________________________________________________
 * _vers - use in blade files to import css/js/fonts/images or any other medias within the application that puts a version at end of its url. Version string will contain the modified timestamp of the file
 
 Parameters:
-- String $urlFile - file url of the resource within the application public or storage folder
-- Bool $onlyVersion - output the version only instead of the whole url + version, default is false
+
+\- String $urlFile - file url of the resource within the application public or storage folder
+
+\- Bool $onlyVersion - output the version only instead of the whole url + version, default is false
 
 Return: String
 
@@ -119,9 +125,12 @@ Sample output:
 * _trim - use to limit the number of characters of a string then puts a string at the end. If there is more than characters than the max limit then it will concatenate a string suffix that is given in the parameter
 
 Parameters:
-- String $string - string/text to be trimmed
-- Int $limit - number of characters to cut, default is 50 characters
-- String $withSuffix - suffix to be given if string exceed the limit
+
+\- String $string - string/text to be trimmed
+
+\- Int $limit - number of characters to cut, default is 50 characters
+
+\- String $withSuffix - suffix to be given if string exceed the limit
 
 Return: String
 
@@ -136,9 +145,12 @@ Sample output:
 * _trimText - the same as the _trim() method, but will remove any html tags that is within the string
 
 Parameters:
-- String $string - string/text to be trimmed
-- Int $limit - number of characters to cut, default is 50 characters
-- String $withSuffix - suffix to be given if string exceed the limit
+
+\- String $string - string/text to be trimmed
+
+\- Int $limit - number of characters to cut, default is 50 characters
+
+\- String $withSuffix - suffix to be given if string exceed the limit
 
 Return: Boolean true/false
 
@@ -153,7 +165,8 @@ Sample output:
 * _isRoute - use to check the current route of the page
 
 Parameters:
-- String $routeName - the route name to be check
+
+\- String $routeName - the route name to be check
 
 Return: Bool/String false/"active"
 
