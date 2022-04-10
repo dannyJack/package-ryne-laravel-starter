@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Ryne\\LaraverStarter\\' => array($baseDir . '/src'),
+    'Ryne\\LaravelStarter\\' => array($baseDir . '/src'),
 );

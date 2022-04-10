@@ -7,18 +7,18 @@ namespace Composer\Autoload;
 class ComposerStaticInitf990769b7b7413bdc2acbb8f9eac971c
 {
     public static $files = array (
-        '04df44ce35fdbae0605903cc7bd0065f' => __DIR__ . '/../..' . '/src/Helpers.php',
+        'c6b1e1ea12306dd57187d9cb47f9e33b' => __DIR__ . '/../..' . '/src/Helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'R' => 
         array (
-            'Ryne\\LaraverStarter\\' => 20,
+            'Ryne\\LaravelStarter\\' => 20,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Ryne\\LaraverStarter\\' => 
+        'Ryne\\LaravelStarter\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

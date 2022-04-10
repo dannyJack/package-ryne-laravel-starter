@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\DB;
 
 class DBHelper
 {
-    public static function keyDelete($table_name, $key, $type = 'foreign')
+    public static function keyDelete($tableName, $key, $type = 'foreign')
     {
-        if (Schema::hasTable($table_name)) {
-            Schema::table($table_name, function (Blueprint $table) use ($table_name, $key, $type) {
+        if (Schema::hasTable($tableName)) {
+            Schema::table($tableName, function (Blueprint $table) use ($tableName, $key, $type) {
                 $keyExists = DB::select(
                     DB::raw(
                         "SHOW KEYS
-                        FROM $table_name
+                        FROM $tableName
                         WHERE Key_name='$key'"
                     )
                 );
