@@ -25,19 +25,19 @@ download the package via composer
 
 to use must call or use the class full path itself by:
 
-`\Ryne\LaravelStarter\DBHelper`
-
-`\Ryne\LaravelStarter\L0g`
+```
+\Ryne\LaravelStarter\DBHelper
+\Ryne\LaravelStarter\L0g
+```
 
 or register the class in the app.php configuration in the aliases section to easily access its methods
 
-`'aliases' => Facade::defaultAliases()->merge([`
-
-`    'DBHelper' => Ryne\LaravelStarter\DBHelper,`
-
-`    'L0g' => Ryne\LaravelStarter\L0g,`
-
-`])->toArray(),`
+```
+'aliases' => Facade::defaultAliases()->merge([
+    'DBHelper' => Ryne\LaravelStarter\DBHelper,
+    'L0g' => Ryne\LaravelStarter\L0g,
+])->toArray(),
+```
 
 ### Methods
 
@@ -83,25 +83,18 @@ Sample usage:
 
 Sample output:
 
-`[2022-04-10 03:01:21] local.ERROR: ***XController.php@xmethod:11***`
+```
+[2022-04-10 03:01:21] local.ERROR: ***XController.php@xmethod:11***
+Message: "test log"
+| data: additional data
 
-`Message: "test log"`
-
-`| data: additional data`
-
-` `
-
-`File trace:`
-
-`	file:`
-
-`		/var/www/dc/vendor/ryne/laravel-starter/src/L0g.php@39 Function: error()`
-
-`		/var/www/dc/app/Http/Controllers/XController.php@11 Function: xmethod()`
-
-`		/var/www/dc/vendor/laravel/framework/src/Illuminate/Routing/Controller.php@54 Function: callAction()`
-
-`__________________________________________________________________________________________________  `
+File trace:
+	file:
+		/var/www/dc/vendor/ryne/laravel-starter/src/L0g.php@39 Function: error()
+		/var/www/dc/app/Http/Controllers/XController.php@11 Function: xmethod()
+		/var/www/dc/vendor/laravel/framework/src/Illuminate/Routing/Controller.php@54 Function: callAction()
+__________________________________________________________________________________________________  
+```
 
 **Helpers.php file
 
