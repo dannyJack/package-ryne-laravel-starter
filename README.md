@@ -55,7 +55,7 @@ Sample usage:
 
 `DBHelper::keyDelete('user_numbers', 'user_numbers_use_id_foreign');`
 
-#### L0g::class
+#### ***L0g::class***
 
 * info (L0g::info) - static method, use to make an information log in the storage folder, it uses the laravel \Log::class to output its log while this customize its output message
 
