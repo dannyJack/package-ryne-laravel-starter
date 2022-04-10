@@ -41,7 +41,7 @@ or register the class in the app.php configuration in the aliases section to eas
 
 ### Methods
 
-**DBHelper::class
+#### DBHelper::class
 
 * keyDelete (DBHelper::keyDelete) - static method, use to delete foreign keys in the migration whenever rolling back some migration or simply removing existing foreign keys.
 
