@@ -41,7 +41,7 @@ or register the class in the app.php configuration in the aliases section to eas
 
 ### Methods
 
-#### DBHelper::class
+#### ***DBHelper::class
 
 * keyDelete (DBHelper::keyDelete) - static method, use to delete foreign keys in the migration whenever rolling back some migration or simply removing existing foreign keys.
 
@@ -96,7 +96,7 @@ File trace:
 __________________________________________________________________________________________________  
 ```
 
-#### Helpers.php file
+#### ***Helpers.php file
 
 * _vers - use in blade files to import css/js/fonts/images or any other medias within the application that puts a version at end of its url. Version string will contain the modified timestamp of the file
 
