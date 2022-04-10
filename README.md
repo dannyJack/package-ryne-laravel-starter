@@ -46,7 +46,7 @@ or register the class in the app.php configuration in the aliases section to eas
 * keyDelete (DBHelper::keyDelete) - static method, use to delete foreign keys in the migration whenever rolling back some migration or simply removing existing foreign keys.
 
 Parameters:
-- String $tableName (required) - table of the foreign keys to be deleted
+\- String $tableName (required) - table of the foreign keys to be deleted
 - String $key (required) - key name to be deleted
 
 Return: void
