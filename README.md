@@ -25,8 +25,9 @@ download the package via composer
 
 to use must call or use the class full path itself by:
 
-`\Ryne\LaravelStarter\DBHelper
-\Ryne\LaravelStarter\L0g`
+`\Ryne\LaravelStarter\DBHelper`
+
+`\Ryne\LaravelStarter\L0g`
 
 or register the class in the app.php configuration in the aliases section to easily access its methods
 
