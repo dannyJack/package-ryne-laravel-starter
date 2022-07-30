@@ -3,7 +3,7 @@ namespace Ryne\LaravelStarter;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelStarterServiceProvider
+class LaravelStarterServiceProvider extends ServiceProvider
 {
     /**
      * {@inheritdoc}
