@@ -14,7 +14,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ryne\\LaravelStarter\\LaravelStarterServiceProvider"
+                "Ryne\\LaravelStarter\\ServiceProvider"
             ]
         }
     },

@@ -1,9 +1,9 @@
 <?php
 namespace Ryne\LaravelStarter;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as SP;
 
-class LaravelStarterServiceProvider extends ServiceProvider
+class ServiceProvider extends SP
 {
     /**
      * {@inheritdoc}
@@ -13,5 +13,9 @@ class LaravelStarterServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
         ], 'phpcs');
+
+        $this->publishes([
+            __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
+        ], 'gitignore');
     }
 }
