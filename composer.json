@@ -11,6 +11,13 @@
             "src/Helpers.php"
         ]
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ryne\\LaravelStarter\\LaravelStarterServiceProvider"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "Dan",

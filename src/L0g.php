@@ -19,8 +19,9 @@ class L0g
     /**
      * L0g::info($message)
      * call the self::out() method
-     * 
+     *
      * @param String $message
+     * @param Object|Array|String|Int ...$params
      */
     public static function info($message, ...$params)
     {
@@ -31,15 +32,60 @@ class L0g
     /**
      * L0g::error($message)
      * call the self::out() method
-     * 
+     *
      * @param String $message
+     * @param Object|Array|String|Int ...$params
      */
     public static function error($message, ...$params)
     {
         $message = self::constructMessage(self::TYPE_ERROR, $message, $params);
         \Log::info($message);
     }
-    
+
+    // /**
+    //  * L0g::slackInfo($message)
+    //  * send slack log information message
+    //  *
+    //  * @param String $message
+    //  * @param Object|Array|String|Int ...$params
+    //  * @return void
+    //  */
+    // public static function slackInfo($message, ...$params)
+    // {
+    //     if (config('slackLog.enable')) {
+    //         if (!empty(config('slackLog.webhookUrl'))) {
+    //             \Log::channel('slack')->info($message);
+    //         } else {
+    //             \L0g::error('Slack Log is not working properly.', [
+    //                 'slackLog.enable' => config('slackLog.enable'),
+    //                 'slackLog.webhookUrl' => config('slackLog.webhookUrl'),
+    //             ]);
+    //         }
+    //     }
+    // }
+
+    // /**
+    //  * L0g::slackError($message)
+    //  * send slack log error message
+    //  *
+    //  * @param String $message
+    //  * @param Object|Array|String|Int ...$params
+    //  * @return void
+    //  */
+    // public static function slackError($message, ...$params)
+    // {
+    //     if (config('slackLog.enable')) {
+    //         if (!empty(config('slackLog.webhookUrl'))) {
+    //             \Log::channel('slack')->error($message);
+    //         } else {
+    //             \L0g::error('Slack Log is not working properly.', [
+    //                 'slackLog.enable' => config('slackLog.enable'),
+    //                 'slackLog.webhookUrl' => config('slackLog.webhookUrl'),
+    //             ]);
+    //         }
+    //     }
+    // }
+
     /**
      * L0g::constructMessage($type, $message)
      * construct message for information/error log
@@ -115,7 +161,7 @@ class L0g
             $str = '';
             if (is_array($user)) {
                 $ctr = 0;
-                foreach($user as $ind => $u) {
+                foreach ($user as $ind => $u) {
                     $str .= "✦";
                     $str .= $ind . ": ";
                     if (is_array($u)) {
@@ -147,7 +193,7 @@ class L0g
         // Other top details
         $ctr = 0;
         $otherTopDetailsStr = '';
-        foreach($params as $id => $p) {
+        foreach ($params as $id => $p) {
             if ($id != 'title' && $id != 'code' && $id != 'user' && $id != 'otherDetails' && $id != 'traceCount') {
                 if ($ctr != 0) {
                     $otherTopDetailsStr .= "\n";
@@ -155,7 +201,7 @@ class L0g
 
                 if (is_array($p)) {
                     $str = '';
-                    foreach($p as $id2 => $p2) {
+                    foreach ($p as $id2 => $p2) {
                         $str .= "✦";
                         $str .= $id2 . ": ";
                         if (is_array($p2)) {
@@ -179,7 +225,7 @@ class L0g
         }
         
         if (!empty($otherTopDetailsStr)) {
-            $logMessage .= "\n" . $otherTopDetailsStr;   
+            $logMessage .= "\n" . $otherTopDetailsStr;
         }
 
         // Backtrace count
@@ -213,7 +259,7 @@ class L0g
                 if (!empty($debug_trace[0]['file'])) {
                     $logMessage .= "\n\nFile trace:";
                     $logMessage .= "\n\tfile:";
-                    foreach($debug_trace as $ind => $trace) {
+                    foreach ($debug_trace as $ind => $trace) {
                         if ($ind > ($backTraceCount - 1)) {
                             break;
                         }
@@ -233,15 +279,15 @@ class L0g
 
         if (count($params) != 0 ? !empty($params['otherDetails']) : false) {
             $others = $params['otherDetails'];
-            if(!empty($others)) {
+            if (!empty($others)) {
                 $logMessage .= "\nOther Details:";
                 if (is_object($others)) {
                     $others = json_decode(json_encode($others), true);
                 }
 
                 if (is_array($others)) {
-                    foreach($others as $o) {
-                        if(!empty($o)) { 
+                    foreach ($others as $o) {
+                        if (!empty($o)) {
                             $logMessage .= "\n\t\"" . $o . '"';
                         }
                     }
