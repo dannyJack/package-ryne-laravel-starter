@@ -12,6 +12,11 @@ class ServiceProvider extends SP
     {
         $this->publishes([
             __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
+            __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
+        ], 'all');
+
+        $this->publishes([
+            __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
         ], 'phpcs');
 
         $this->publishes([
