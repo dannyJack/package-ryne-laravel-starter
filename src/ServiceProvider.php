@@ -33,7 +33,7 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php'),
             __DIR__ . '/defaults/Traits/Models/ParentModel.php' => config_path('../Traits/Models/ParentModel.php'),
             __DIR__ . '/defaults/app/Models/MainModel.php' => config_path('../app/Models/MainModel.php'),
-            __DIR__ . '/defaults/app/Models/MainModelAuthenticatable.php' => config_path('../app/Models/MainModel.php'),
+            __DIR__ . '/defaults/app/Models/MainModelAuthenticatable.php' => config_path('../app/Models/MainModelAuthenticatable.php'),
             __DIR__ . '/defaults/app/Models/MainModelCompoships.php' => config_path('../app/Models/MainModelCompoships.php')
         ], 'all');
 
@@ -96,7 +96,7 @@ class ServiceProvider extends SP
         $this->publishes([
             __DIR__ . '/defaults/Traits/Models/ParentModel.php' => config_path('../Traits/Models/ParentModel.php'),
             __DIR__ . '/defaults/app/Models/MainModel.php' => config_path('../app/Models/MainModel.php'),
-            __DIR__ . '/defaults/app/Models/MainModelAuthenticatable.php' => config_path('../app/Models/MainModel.php'),
+            __DIR__ . '/defaults/app/Models/MainModelAuthenticatable.php' => config_path('../app/Models/MainModelAuthenticatable.php'),
             __DIR__ . '/defaults/app/Models/MainModelCompoships.php' => config_path('../app/Models/MainModelCompoships.php')
         ], 'model');
     }
