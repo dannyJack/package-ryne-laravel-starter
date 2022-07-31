@@ -31,7 +31,7 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/resources/lang/ja/validation.php' => config_path('../' . $langPath . 'lang/ja/validation.php'),
             __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../' . $langPath . 'lang/ja/words.php'),
             __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php'),
-            __DIR__ . '/defaults/Traits/Models/ParentModel.php' => config_path('../Traits/Models/ParentModel.php'),
+            __DIR__ . '/defaults/app/Traits/Models/ParentModel.php' => config_path('../app/Traits/Models/ParentModel.php'),
             __DIR__ . '/defaults/app/Models/MainModel.php' => config_path('../app/Models/MainModel.php'),
             __DIR__ . '/defaults/app/Models/MainModelAuthenticatable.php' => config_path('../app/Models/MainModelAuthenticatable.php'),
             __DIR__ . '/defaults/app/Models/MainModelCompoships.php' => config_path('../app/Models/MainModelCompoships.php')
@@ -94,7 +94,7 @@ class ServiceProvider extends SP
         /** MODELS DIR */
 
         $this->publishes([
-            __DIR__ . '/defaults/Traits/Models/ParentModel.php' => config_path('../Traits/Models/ParentModel.php'),
+            __DIR__ . '/defaults/app/Traits/Models/ParentModel.php' => config_path('../app/Traits/Models/ParentModel.php'),
             __DIR__ . '/defaults/app/Models/MainModel.php' => config_path('../app/Models/MainModel.php'),
             __DIR__ . '/defaults/app/Models/MainModelAuthenticatable.php' => config_path('../app/Models/MainModelAuthenticatable.php'),
             __DIR__ . '/defaults/app/Models/MainModelCompoships.php' => config_path('../app/Models/MainModelCompoships.php')
