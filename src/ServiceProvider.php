@@ -16,12 +16,23 @@ class ServiceProvider extends SP
             $langPath = '';
         }
 
+        /** BY BATCH */
+
         $this->publishes([
             __DIR__ . '/defaults/.env.setup' => config_path('../.env.setup'),
             __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
             __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
             __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php')
         ], 'all');
+
+        $this->publishes([
+            __DIR__ . '/defaults/.env.setup' => config_path('../.env.setup'),
+            __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
+            __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
+            __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php')
+        ], 'starter');
+
+        /** ROOT DIR */
 
         $this->publishes([
             __DIR__ . '/defaults/.env.setup' => config_path('../.env.setup')
@@ -35,13 +46,13 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/gitignore' => config_path('../.gitignore')
         ], 'gitignore');
 
-        $this->publishes([
-            __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php')
-        ], 'slackLog');
+        /** CONFIG DIR */
 
         $this->publishes([
             __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php')
         ], 'slackLog');
+
+        /** LOCALE DIR */
 
         $this->publishes([
             __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../' . $langPath . 'lang/en/words.php'),
@@ -67,5 +78,14 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../' . $langPath . 'lang/ja/words.php'),
             __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php')
         ], 'langJa');
+
+        /** MODELS DIR */
+
+        $this->publishes([
+            __DIR__ . '/defaults/Traits/Models/ParentModel.php' => config_path('../Traits/Models/ParentModel.php'),
+            __DIR__ . '/defaults/app/Models/MainModel.php' => config_path('../app/Models/MainModel.php'),
+            __DIR__ . '/defaults/app/Models/MainModelAuthenticatable.php' => config_path('../app/Models/MainModel.php'),
+            __DIR__ . '/defaults/app/Models/MainModelCompoships.php' => config_path('../app/Models/MainModelCompoships.php'),
+        ], 'model');
     }
 }
