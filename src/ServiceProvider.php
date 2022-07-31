@@ -11,9 +11,15 @@ class ServiceProvider extends SP
     public function boot()
     {
         $this->publishes([
+            __DIR__ . '/defaults/.env.setup' => config_path('../.env.setup'),
             __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
             __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
+            __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php'),
         ], 'all');
+
+        $this->publishes([
+            __DIR__ . '/defaults/.env.setup' => config_path('../.env.setup'),
+        ], 'env');
 
         $this->publishes([
             __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
@@ -22,5 +28,9 @@ class ServiceProvider extends SP
         $this->publishes([
             __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
         ], 'gitignore');
+
+        $this->publishes([
+            __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php'),
+        ], 'slackLog');
     }
 }
