@@ -44,20 +44,16 @@ class ServiceProvider extends SP
         ], 'slackLog');
 
         $this->publishes([
-            __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../' . $langPath . 'lang/en/words.php'),
-            __DIR__ . '/defaults/resources/lang/en/messages.php' => config_path('../' . $langPath . 'lang/en/messages.php'),
-            __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../' . $langPath . 'lang/ja/words.php'),
-            __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php')
+            __DIR__ . '/defaults/resources/lang/en/*' => config_path('../' . $langPath . 'lang/en/*'),
+            __DIR__ . '/defaults/resources/lang/ja/*' => config_path('../' . $langPath . 'lang/ja/*')
         ], 'lang');
 
         $this->publishes([
-            __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../' . $langPath . 'lang/en/words.php'),
-            __DIR__ . '/defaults/resources/lang/en/messages.php' => config_path('../' . $langPath . 'lang/en/messages.php')
+            __DIR__ . '/defaults/resources/lang/en/*' => config_path('../' . $langPath . 'lang/en/*')
         ], 'langEn');
 
         $this->publishes([
-            __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../' . $langPath . 'lang/ja/words.php'),
-            __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php')
+            __DIR__ . '/defaults/resources/lang/ja/*' => config_path('../' . $langPath . 'lang/ja/*')
         ], 'langJa');
     }
 }
