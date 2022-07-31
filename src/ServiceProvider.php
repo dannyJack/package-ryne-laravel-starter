@@ -10,6 +10,12 @@ class ServiceProvider extends SP
      */
     public function boot()
     {
+        $langPath = 'resources/';
+
+        if (_isAppVersion('>=', '9')) {
+            $langPath = '';
+        }
+
         $this->publishes([
             __DIR__ . '/defaults/.env.setup' => config_path('../.env.setup'),
             __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
@@ -38,20 +44,20 @@ class ServiceProvider extends SP
         ], 'slackLog');
 
         $this->publishes([
-            __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../resources/lang/en/words.php'),
-            __DIR__ . '/defaults/resources/lang/en/messages.php' => config_path('../resources/lang/en/messages.php'),
-            __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../resources/lang/ja/words.php'),
-            __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../resources/lang/ja/messages.php')
+            __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../' . $langPath . 'lang/en/words.php'),
+            __DIR__ . '/defaults/resources/lang/en/messages.php' => config_path('../' . $langPath . 'lang/en/messages.php'),
+            __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../' . $langPath . 'lang/ja/words.php'),
+            __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php')
         ], 'lang');
 
         $this->publishes([
-            __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../resources/lang/en/words.php'),
-            __DIR__ . '/defaults/resources/lang/en/messages.php' => config_path('../resources/lang/en/messages.php')
+            __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../' . $langPath . 'lang/en/words.php'),
+            __DIR__ . '/defaults/resources/lang/en/messages.php' => config_path('../' . $langPath . 'lang/en/messages.php')
         ], 'langEn');
 
         $this->publishes([
-            __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../resources/lang/ja/words.php'),
-            __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../resources/lang/ja/messages.php')
+            __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../' . $langPath . 'lang/ja/words.php'),
+            __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php')
         ], 'langJa');
     }
 }

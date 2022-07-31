@@ -31,14 +31,15 @@ if (!function_exists('_vers')) {
 /**
  * _trim($string, $limit, $withSuffix)
  * Trim a string with limit characters & optional ellipsis
- * 
+ *
  * @param String $string - string to be trim
  * @param Int $limit - the character limit for the string
  * @param String/Bool $withSuffix - optional with suffix after the limit, can be set to False
  * @return String
  */
 if (!function_exists('_trim')) {
-    function _trim($string, $limit = 50, $withSuffix = '...') {
+    function _trim($string, $limit = 50, $withSuffix = '...')
+    {
         if (empty($withSuffix)) {
             $withSuffix = '';
         }
@@ -50,14 +51,15 @@ if (!function_exists('_trim')) {
 /**
  * _trimText($string, $limit, $withSuffix)
  * Trim a string with limit characters & optional ellipsis (and remove html tags)
- * 
+ *
  * @param String $string - string to be trim
  * @param Int $limit - the character limit for the string
  * @param String/Bool $withSuffix - optional with suffix after the limit, can be set to False
  * @return String
  */
 if (!function_exists('_trimText')) {
-    function _trimText($string, $limit = 50, $withSuffix = '...') {
+    function _trimText($string, $limit = 50, $withSuffix = '...')
+    {
         $string = strip_tags($string);
         return _trim($string, $limit, $withSuffix);
     }
@@ -66,7 +68,7 @@ if (!function_exists('_trimText')) {
 /**
  * _isRoute($routename)
  * Check current route name
- * 
+ *
  * @param String $routeName - the route name to be check
  * @return String [$name,'active','']
  */
@@ -87,6 +89,150 @@ if (!function_exists('_isRoute')) {
                 } elseif ($name == $routeName) {
                     $rtn = 'active';
                 }
+            }
+        }
+
+        return $rtn;
+    }
+}
+
+/**
+ * _isAppVersion($param1, $param2 = null)
+ * Check current laravel version
+ *
+ * @param String $param1 - Inqualities (>, <, =, >=, <=) or Laravel version (e.g 5.7.1, 9.0)
+ * @param String $param2 - Laravel version (e.g 5.7.1, 9.0)
+ * @return Bool $rtn
+ */
+if (!function_exists('_isAppVersion')) {
+    function _isAppVersion($param1, $param2 = null)
+    {
+        $rtn = false;
+        $currentVersion = app()::VERSION;
+
+        if (!empty($currentVersion)) {
+            $arr = explode('"', $currentVersion);
+
+            if (count($arr) > 1) {
+                $currentVersion = $arr[1];
+            }
+        } else {
+            $currentVersion = null;
+        }
+        
+        if (!empty($currentVersion)) {
+            $currentVersionArr = explode('.', $currentVersion);
+
+            if (is_null($param2) || (!is_null($param2) && $param1 == '=')) {
+                $value = $param1;
+
+                if (!is_null($param2)) {
+                    $value = $param2;
+                }
+
+                $version = explode('.', $value);
+                $toBeRtn = true;
+
+                if (count($currentVersionArr) < count($version)) {
+                    $toBeRtn = false;
+                } else {
+                    foreach ($version as $ind => $ver) {
+                        if (is_numeric($ver) && is_numeric($currentVersionArr[$ind])) {
+                            if ((int)$ver != (int)$currentVersionArr[$ind]) {
+                                $toBeRtn = false;
+                                break;
+                            }
+                        } else {
+                            $toBeRtn = false;
+                            break;
+                        }
+                    }
+                }
+
+                $rtn = $toBeRtn;
+            } else {
+                $version = explode('.', $param2);
+                $toBeRtn = true;
+
+                if ($param1 == '>' || (strlen($param1) == 2 && strpos($param1, '>') !== false)) {
+                    $isInvalid = false;
+                    $hasEqualsOperator =  false;
+
+                    if (strlen($param1) == 2) {
+                        if (strpos($param1, '=') !== false) {
+                            $hasEqualsOperator = true;
+                        } else {
+                            $isInvalid = true;
+                        }
+                    }
+
+                    if ($isInvalid) {
+                        $toBeRtn = false;
+                    } else {
+                        foreach ($version as $ind => $ver) {
+                            if (is_numeric($ver) && is_numeric($currentVersionArr[$ind])) {
+                                if ((int)$ver == (int)$currentVersionArr[$ind]) {
+                                    if ($ind + 1 == count($currentVersionArr)) {
+                                        break;
+                                    } else {
+                                        continue;
+                                    }
+                                } else {
+                                    if ($hasEqualsOperator ? (int)$ver <= (int)$currentVersionArr[$ind] : false) {
+                                        break;
+                                    } elseif ((int)$ver < (int)$currentVersionArr[$ind]) {
+                                        break;
+                                    } else {
+                                        $toBeRtn = false;
+                                    }
+                                }
+                            } else {
+                                $toBeRtn = false;
+                                break;
+                            }
+                        }
+                    }
+    
+                    $rtn = $toBeRtn;
+                } elseif ($param1 == '<' || (strlen($param1) == 2 && strpos($param1, '<') !== false)) {
+                    $isInvalid = false;
+                    $hasEqualsOperator =  false;
+
+                    if (strlen($param1) == 2) {
+                        if (strpos($param1, '=') !== false) {
+                            $hasEqualsOperator = true;
+                        } else {
+                            $isInvalid = true;
+                        }
+                    }
+
+                    if ($isInvalid) {
+                        $toBeRtn = false;
+                    } else {
+                        foreach ($version as $ind => $ver) {
+                            if (is_numeric($ver) && is_numeric($currentVersionArr[$ind])) {
+                                if ((int)$ver == (int)$currentVersionArr[$ind]) {
+                                    continue;
+                                } else {
+                                    if ($hasEqualsOperator ? (int)$ver >= (int)$currentVersionArr[$ind] : false) {
+                                        break;
+                                    } elseif ((int)$ver > (int)$currentVersionArr[$ind]) {
+                                        break;
+                                    } else {
+                                        $toBeRtn = false;
+                                    }
+                                }
+                            } else {
+                                $toBeRtn = false;
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    $toBeRtn = false;
+                }
+
+                $rtn = $toBeRtn;
             }
         }
 
