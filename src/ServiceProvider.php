@@ -72,7 +72,7 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/app/Services/MainService.php' => config_path('../app/Services/MainService.php'),
             __DIR__ . '/defaults/app/Traits/ModelCollectionTrait.php' => config_path('../app/Traits/ModelCollectionTrait.php'),
             __DIR__ . '/defaults/app/Traits/UploadTrait.php' => config_path('../app/Traits/UploadTrait.php'),
-            __DIR__ . '/defaults/config/upload.php' => config_path('../app/config/upload.php'),
+            __DIR__ . '/defaults/config/upload.php' => config_path('../config/upload.php'),
         ], 'irs');
 
         /** CONFIG DIR */
