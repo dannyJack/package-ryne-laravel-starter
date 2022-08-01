@@ -25,3 +25,7 @@ public/fonts/vendor
 public/mix-manifest.json
 public/assets
 storage/framework/laravel-excel
+app/Helpers/*.ex
+app/Interfaces/*.ex
+app/Repositories/*.ex
+app/Services/*.ex
