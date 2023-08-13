@@ -25,5 +25,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "required": {}
+    "required": {
+        "laravel/framework": "^9.0 || ^10.0"
+    }
 }

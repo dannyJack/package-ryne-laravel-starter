@@ -102,5 +102,13 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/app/Models/MainModelAuthenticatable.php' => config_path('../app/Models/MainModelAuthenticatable.php'),
             __DIR__ . '/defaults/app/Models/MainModelCompoships.php' => config_path('../app/Models/MainModelCompoships.php')
         ], 'model');
+
+        /** BLADE TEMPLATES */
+
+        $this->publishes([
+            __DIR__ . '/defaults/public/js/toastr-message.js' => config_path('../public/js/toastr-message.js'),
+            __DIR__ . '/defaults/resources/views/assets/js/common/asset-js-toastr-message.blade.php' => config_path('../resources/views/assets/js/common/asset-js-toastr-message.blade.php'),
+            __DIR__ . '/defaults/resources/views/layouts/common/app.blade.php' => config_path('../resources/views/layouts/common/app.blade.php'),
+        ], 'blade-templates');
     }
 }
