@@ -25,5 +25,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "required": {}
+    "require": {
+        "laravel/framework": "<9.0.0"
+    }
 }
