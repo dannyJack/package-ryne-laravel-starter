@@ -1,4 +1,4 @@
-@extends('layouts.guest.app')
+@extends('layouts.common.app')
 @section('bodyClass', 'pg-login login-page')
 @section('content')
 <div class="login-box">

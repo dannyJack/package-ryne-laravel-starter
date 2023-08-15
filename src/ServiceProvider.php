@@ -40,6 +40,11 @@ class ServiceProvider extends SP
         // ], $langEn, $langJa), 'all');
 
         $this->publishes(array_merge([
+            __DIR__ . '/defaults/resources/css/compile.css' => config_path('../resources/css/compile.css'),
+            __DIR__ . '/defaults/resources/js/compile.js' => config_path('../resources/js/compile.js'),
+            __DIR__ . '/defaults/public/js/app.js' => config_path('../public/js/app.js'),
+            __DIR__ . '/defaults/public/css/app.css' => config_path('../public/css/app.css'),
+
             __DIR__ . '/defaults/resources/views/layouts/auth/app.blade.php' => config_path('../resources/views/layouts/auth/app.blade.php'),
             __DIR__ . '/defaults/resources/views/layouts/auth/aside.blade.php' => config_path('../resources/views/layouts/auth/aside.blade.php'),
             __DIR__ . '/defaults/resources/views/layouts/auth/content-header.blade.php' => config_path('../resources/views/layouts/auth/content-header.blade.php'),
