@@ -61,6 +61,7 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/app/Models/ModelCompoships.php' => config_path('../app/Models/ModelCompoships.php'),
 
             __DIR__ . '/defaults/.env.setup' => config_path('../.env.setup'),
+            __DIR__ . '/defaults/vite.config.js' => config_path('../vite.config.js'),
             // __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
             // __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php')
         ], $langEn, $langJa), 'starter');
