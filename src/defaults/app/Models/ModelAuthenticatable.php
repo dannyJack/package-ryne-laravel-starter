@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Traits\Models\ParentModel;
+use App\Traits\Models\ModelTrait;
 
-class MainModelAuthenticatable extends Authenticatable
+class ModelAuthenticatable extends Authenticatable
 {
-    use ParentModel;
+    use ModelTrait;
 
     /**
      * @var $appends

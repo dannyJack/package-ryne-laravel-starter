@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Traits\Models\ParentModel;
+use Illuminate\Database\Eloquent\Model as Md;
+use App\Traits\Models\ModelTrait;
 
-class MainModel extends Model
+class Model extends Md
 {
-    use ParentModel;
+    use ModelTrait;
 
     /**
      * @var $appends

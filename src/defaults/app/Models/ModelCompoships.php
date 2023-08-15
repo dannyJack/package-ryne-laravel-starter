@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Awobaz\Compoships\Compoships;
 
-class MainModelCompoships extends MainModel
+class ModelCompoships extends Model
 {
     use Compoships;
 }

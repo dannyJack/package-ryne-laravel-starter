@@ -4,7 +4,7 @@ namespace App\Traits\Models;
 
 use Carbon\Carbon;
 
-trait ParentModel
+trait ModelTrait
 {
     /*======================================================================
      * CUSTOM METHODS
