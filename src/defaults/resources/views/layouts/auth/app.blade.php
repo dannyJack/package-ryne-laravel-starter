@@ -18,6 +18,7 @@
                 @include('layouts.auth.header')
                 @include('layouts.auth.aside')
                 <div class="content-wrapper">
+                    @include('layouts.common.content-header')
                     <section class="content px-4">
                         @yield('content')
                     </section>
