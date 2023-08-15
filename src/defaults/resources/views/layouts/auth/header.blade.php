@@ -1,5 +1,5 @@
 <div class="preloader flex-column justify-content-center align-items-center">
-    <img src="" alt="" class="animation__shake" src="{{ _vers('images/common/logo.svg') }}" alt="{{ config('app.name') }}" height="60" width="60" />
+    <img src="{{ _vers('images/common/logo.svg') }}" alt="{{ config('app.name') }}" class="animation__shake" height="60" width="60" />
     <span class="brand-text font-weignt-bold text-blue">{{ config('app.name') }}</span>
 </div>
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">

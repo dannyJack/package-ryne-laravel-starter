@@ -9,7 +9,7 @@
                 <li class="nav-item">
                     <a href="{{-- route('dashboard.index') --}}" class="nav-link{{-- _isRoute('dashboard.index') ? ' active' : '' --}}">
                         <i class="nav-icon fas fa-tachometer-alt half"></i>
-                        <p>{{ __('words.NumberOfRegisteredPeople') }}</p>
+                        <p>{{ __('words.Dashboard') }}</p>
                     </a>
                 </li>
             </ul>
