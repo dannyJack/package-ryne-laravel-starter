@@ -1,6 +1,6 @@
 <h1>Laravel starter (ryne/laravel-starter)</h1>
 
-> Version 1.0
+> Version 1.3.11
 
 Laravel starter comes with helpful methods in making laravel projects
 
@@ -173,6 +173,27 @@ Return: Bool/String false/"active"
 Sample usage:
 
 `_isRoute('user.index')`
+
+## Setup
+
+please make sure that you already have run the command "npm install" before proceeding
+
+after installation you can use the prebuilt blade templates and setup by using our ServiceProvider
+just run the command in your project
+
+`php artisan vendor:publish --provider="Ryne\LaravelStarter\ServiceProvider" --tag=starter`
+
+I recommend using the "--force" command with the above command when starting your laravel project as this will overwrite your "vite.config.js" to align the setup with this prebuilt setup.
+
+after you have run the above command now you need to install the following npm packages
+* @fortawesome/fontawesome-free
+* admin-lte
+* dotenv
+* jquery
+
+now you can run the command and check your webpage
+
+`npm run build`
 
 ## License
 
