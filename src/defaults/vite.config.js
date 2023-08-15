@@ -13,7 +13,7 @@ var viteConfig = {
     ],
     server: {
         host: '0.0.0.0',
-        port: ProcessingInstruction.env.VITE_SERVER_PORT
+        port: process.env.VITE_SERVER_PORT
     }
 };
 
