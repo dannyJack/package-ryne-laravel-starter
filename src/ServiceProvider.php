@@ -78,9 +78,9 @@ class ServiceProvider extends SP
         //     __DIR__ . '/defaults/.env.tmp' => config_path('../.env.tmp')
         // ], 'env');
 
-        // $this->publishes([
-        //     __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml')
-        // ], 'phpcs');
+        $this->publishes([
+            __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml')
+        ], 'phpcs');
 
         // $this->publishes([
         //     __DIR__ . '/defaults/gitignore' => config_path('../.gitignore')
