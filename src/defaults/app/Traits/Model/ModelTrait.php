@@ -7,8 +7,8 @@ use Carbon\Carbon;
 trait ModelTrait
 {
     /*======================================================================
-     * CUSTOM METHODS
-     *======================================================================*/
+    .* CUSTOM METHODS
+    .*======================================================================*/
 
     /**
      * get valid attribute if exist, if not then return default value
@@ -49,9 +49,9 @@ trait ModelTrait
     /**
      * carbon format a property date
      *
-     * @param String $property
-     * @param String $format
-     * @return String $rtn
+     * @param string $property
+     * @param string $format
+     * @return string $rtn
      */
     public function formatDate(string $property, string $format = 'Y年m月d日'): string
     {
@@ -81,8 +81,8 @@ trait ModelTrait
     }
 
     /*======================================================================
-     * CUSTOM STATIC METHODS
-     *======================================================================*/
+    .* CUSTOM STATIC METHODS
+    .*======================================================================*/
 
     /**
      * The "booted" method of the model.
@@ -93,33 +93,14 @@ trait ModelTrait
     {
         parent::boot();
         static::creating(function ($data) {
-            // // updateUser
-            // if (empty($data->updateUser)) {
-            //     $name = '';
-
-            //     if (auth()->check()) {
-            //         $name = auth()->user()->name;
-            //     } else {
-            //         $name = 'SYSTEM';
-            //     }
-
-            //     $data->updateUser = _trim($name, 8, '...');
-            // }
-
+            # DAN (2023/08/16 11:50) - upon creating a record you can insert/update an attribute in here
+            // $data->[ATTRIBUTE] = [VALUE];
             return $data;
         });
 
         static::updating(function ($data) {
-            // $name = '';
-
-            // if (auth()->check()) {
-            //     $name = auth()->user()->name;
-            // } else {
-            //     $name = 'SYSTEM';
-            // }
-
-            // $data->updateUser = _trim($name, 8, '...');
-
+            # DAN (2023/08/16 11:48) - upon updating a record you can insert/update an attribute in here
+            // $data->[ATTRIBUTE] = [VALUE];
             return $data;
         });
     }
@@ -127,29 +108,17 @@ trait ModelTrait
     /**
      * inserting bulk records
      *
-     * @param Array $attributesArray
-     * @return Bool $rtn
+     * @param array $attributesArray
+     * @return bool $rtn
      */
     public static function inserting(array $attributesArray)
     {
         $rtn = false;
         $insertAttributesArray = [];
 
-        // $name = '';
-
-        // if (auth()->check()) {
-        //     $name = auth()->user()->name;
-        // } else {
-        //     $name = 'SYSTEM';
-        // }
-
-        // $updateUser = _trim($name, 8, '...');
-
         foreach ($attributesArray as $arr) {
-            // if (empty($arr['updateUser'])) {
-            //     $arr['updateUser'] = $updateUser;
-            // }
-
+            # DAN (2023/08/16 11:50) - upon inserting a record you can insert/update an attribute in here
+            // $data->[ATTRIBUTE] = [VALUE];
             $insertAttributesArray[] = $arr;
         }
 
@@ -169,13 +138,13 @@ trait ModelTrait
     }
 
     /*======================================================================
-     * ACCESSORS
-     *======================================================================*/
+    .* ACCESSORS
+    .*======================================================================*/
 
     /**
      * id
      *
-     * @return Int
+     * @return int
      */
     public function getIdAttribute($value): int
     {
@@ -197,7 +166,7 @@ trait ModelTrait
     /**
      * isEmpty
      *
-     * @return Bool
+     * @return bool
      */
     public function getIsEmptyAttribute()
     {
@@ -207,7 +176,7 @@ trait ModelTrait
     /**
      * isNotEmpty
      *
-     * @return Bool
+     * @return bool
      */
     public function getIsNotEmptyAttribute()
     {
@@ -215,8 +184,8 @@ trait ModelTrait
     }
 
     /*======================================================================
-     * SCOPES
-     *======================================================================*/
+    .* SCOPES
+    .*======================================================================*/
 
     /**
      * whereDeleted
