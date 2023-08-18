@@ -14,6 +14,8 @@ class ServiceProvider extends SP
      */
     public function boot()
     {
+        $this->setData();
+
         /** BY BATCH */
 
         $this->publishes(array_merge([
