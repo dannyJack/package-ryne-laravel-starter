@@ -3,10 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Schema;
 use App\Traits\ModelCollectionTrait;
-use Carbon\Carbon;
 
 class MainEloquentRepository
 {

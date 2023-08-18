@@ -5,39 +5,16 @@ use Illuminate\Support\ServiceProvider as SP;
 
 class ServiceProvider extends SP
 {
+    private $pubLangEn = [];
+    private $pubLangJa = [];
+    private $pubModels = [];
+
     /**
      * {@inheritdoc}
      */
     public function boot()
     {
-        $langPath = 'resources/';
-
-        if (_isAppVersion('>=', '9')) {
-            $langPath = '';
-        }
-
-        $langEn = [
-            __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../' . $langPath . 'lang/en/words.php'),
-            __DIR__ . '/defaults/resources/lang/en/messages.php' => config_path('../' . $langPath . 'lang/en/messages.php')
-        ];
-        $langJa = [
-            __DIR__ . '/defaults/resources/lang/ja/validation.php' => config_path('../' . $langPath . 'lang/ja/validation.php'),
-            __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../' . $langPath . 'lang/ja/words.php'),
-            __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php')
-        ];
-
         /** BY BATCH */
-
-        // $this->publishes(array_merge([
-        //     __DIR__ . '/defaults/.env.tmp' => config_path('../.env.tmp'),
-        //     __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml'),
-        //     __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
-        //     __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php'),
-        //     __DIR__ . '/defaults/app/Traits/Models/ModelTrait.php' => config_path('../app/Traits/Models/ModelTrait.php'),
-        //     __DIR__ . '/defaults/app/Models/Model.php' => config_path('../app/Models/Model.php'),
-        //     __DIR__ . '/defaults/app/Models/ModelAuthenticatable.php' => config_path('../app/Models/ModelAuthenticatable.php'),
-        //     __DIR__ . '/defaults/app/Models/ModelCompoships.php' => config_path('../app/Models/ModelCompoships.php')
-        // ], $langEn, $langJa), 'all');
 
         $this->publishes(array_merge([
             __DIR__ . '/defaults/resources/css/compile.css' => config_path('../resources/css/compile.css'),
@@ -60,17 +37,12 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/resources/views/pages/auth/dashboard/index.blade.php' => config_path('../resources/views/pages/auth/dashboard/index.blade.php'),
             __DIR__ . '/defaults/resources/views/pages/guest/auth/login.blade.php' => config_path('../resources/views/pages/guest/auth/login.blade.php'),
 
-            __DIR__ . '/defaults/app/Traits/Model/ModelTrait.php' => config_path('../app/Traits/Model/ModelTrait.php'),
-            __DIR__ . '/defaults/app/Models/Model.php' => config_path('../app/Models/Model.php'),
-            __DIR__ . '/defaults/app/Models/ModelAuthenticatable.php' => config_path('../app/Models/ModelAuthenticatable.php'),
-            __DIR__ . '/defaults/app/Models/ModelCompoships.php' => config_path('../app/Models/ModelCompoships.php'),
-
             __DIR__ . '/defaults/.env.tmp' => config_path('../.env.tmp'),
             __DIR__ . '/defaults/vite.config.js' => config_path('../vite.config.js'),
             __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml')
             // __DIR__ . '/defaults/gitignore' => config_path('../.gitignore'),
             // __DIR__ . '/SlackLog/config/slackLog.php' => config_path('./slackLog.php')
-        ], $langEn, $langJa), 'starter');
+        ], $this->pubLangEn, $this->pubLangJa, $this->pubModels), 'starter');
 
         /** ROOT DIR */
 
@@ -82,10 +54,6 @@ class ServiceProvider extends SP
             __DIR__ . '/defaults/phpcs.xml' => config_path('../phpcs.xml')
         ], 'phpcs');
 
-        // $this->publishes([
-        //     __DIR__ . '/defaults/gitignore' => config_path('../.gitignore')
-        // ], 'gitignore');
-
         /** IRS (Interfaces, Repositories, Services) + Helpers (Globals, Upload) + Traits (ModelCollectionTrait, UploadTrait) */
 
         // $this->publishes([
@@ -93,7 +61,6 @@ class ServiceProvider extends SP
         //     __DIR__ . '/defaults/app/Helpers/Globals.php.ex' => config_path('../app/Helpers/Globals.php.ex'),
         //     __DIR__ . '/defaults/app/Helpers/Upload.php' => config_path('../app/Helpers/Upload.php'),
         //     __DIR__ . '/defaults/app/Interfaces/ExampleRepositoryInterface.php.ex' => config_path('../app/Interfaces/ExampleRepositoryInterface.php.ex'),
-        //     __DIR__ . '/defaults/app/Providers/RepositoryServiceProvider.php' => config_path('../app/Providers/RepositoryServiceProvider.php'),
         //     __DIR__ . '/defaults/app/Repositories/ExampleEloquentRepository.php.ex' => config_path('../app/Repositories/ExampleEloquentRepository.php.ex'),
         //     __DIR__ . '/defaults/app/Repositories/MainEloquentRepository.php' => config_path('../app/Repositories/MainEloquentRepository.php'),
         //     __DIR__ . '/defaults/app/Services/ExampleService.php.ex' => config_path('../app/Services/ExampleService.php.ex'),
@@ -111,18 +78,10 @@ class ServiceProvider extends SP
 
         /** LOCALE DIR */
 
-        // $this->publishes(array_merge($langEn, $langJa), 'lang');
-        // $this->publishes($langEn, 'langEn');
-        // $this->publishes($langJa, 'langJa');
-
-        /** MODELS DIR */
-
-        // $this->publishes([
-        //     __DIR__ . '/defaults/app/Traits/Models/ModelTrait.php' => config_path('../app/Traits/Models/ModelTrait.php'),
-        //     __DIR__ . '/defaults/app/Models/Model.php' => config_path('../app/Models/Model.php'),
-        //     __DIR__ . '/defaults/app/Models/ModelAuthenticatable.php' => config_path('../app/Models/ModelAuthenticatable.php'),
-        //     __DIR__ . '/defaults/app/Models/ModelCompoships.php' => config_path('../app/Models/ModelCompoships.php')
-        // ], 'model');
+        $this->publishes(array_merge($this->pubLangEn, $this->pubLangJa), 'lang');
+        $this->publishes($this->pubLangEn, 'langEn');
+        $this->publishes($this->pubLangJa, 'langJa');
+        $this->publishes($this->pubModels, 'models');
 
         /** BLADE TEMPLATES */
 
@@ -132,5 +91,31 @@ class ServiceProvider extends SP
         //     __DIR__ . '/defaults/resources/views/assets/js/common/asset-js-toastr-message.blade.php' => config_path('../resources/views/assets/js/common/asset-js-toastr-message.blade.php'),
         //     __DIR__ . '/defaults/public/js/toastr-message.js' => config_path('../public/js/toastr-message.js'),
         // ], 'blade-templates');
+    }
+
+    private function setData()
+    {
+        $langPath = 'resources/';
+
+        if (_isAppVersion('>=', '9')) {
+            $langPath = '';
+        }
+
+        $this->pubLangEn = [
+            __DIR__ . '/defaults/resources/lang/en/words.php' => config_path('../' . $langPath . 'lang/en/words.php'),
+            __DIR__ . '/defaults/resources/lang/en/messages.php' => config_path('../' . $langPath . 'lang/en/messages.php')
+        ];
+        $this->pubLangJa = [
+            __DIR__ . '/defaults/resources/lang/ja/validation.php' => config_path('../' . $langPath . 'lang/ja/validation.php'),
+            __DIR__ . '/defaults/resources/lang/ja/words.php' => config_path('../' . $langPath . 'lang/ja/words.php'),
+            __DIR__ . '/defaults/resources/lang/ja/messages.php' => config_path('../' . $langPath . 'lang/ja/messages.php')
+        ];
+
+        $this->pubModels = [
+            __DIR__ . '/defaults/app/Traits/Models/ModelTrait.php' => config_path('../app/Traits/Models/ModelTrait.php'),
+            __DIR__ . '/defaults/app/Models/Model.php' => config_path('../app/Models/Model.php'),
+            __DIR__ . '/defaults/app/Models/ModelAuthenticatable.php' => config_path('../app/Models/ModelAuthenticatable.php'),
+            __DIR__ . '/defaults/app/Models/ModelCompoships.php' => config_path('../app/Models/ModelCompoships.php')
+        ];
     }
 }
