@@ -2,10 +2,10 @@
 
 namespace Ryne\LaravelStarter;
 
-use Ryne\LaravelStarter\Consts\L0gConst;
-use Ryne\LaravelStarter\Helpers\L0gHelper;
+use Ryne\LaravelStarter\Helpers\LogHelper;
+use Ryne\LaravelStarter\Interfaces\LogInterface;
 
-class L0g
+class L0g implements LogInterface
 {
     /*======================================================================
     .* STATIC METHODS
@@ -13,15 +13,15 @@ class L0g
 
     /**
      * L0g::info($message)
-     * call the L0gHelper::constructMessage() method
+     * call the LogHelper::constructMessage() method
      *
-     * @param String $message
-     * @param Object|Array|String|Int ...$params
+     * @param string $message
+     * @param object|array|string|int ...$params
      * @return void
      */
-    public static function info($message, ...$params)
+    public static function info(string $message, ...$params)
     {
-        $message = L0gHelper::constructMessage(L0gConst::TYPE_INFO, $message, $params);
+        $message = LogHelper::constructMessage(LogHelper::TYPE_INFO, $message, $params);
         \Log::info($message);
     }
 
@@ -29,24 +29,37 @@ class L0g
      * L0g::error($message)
      * call the self::constructMessage() method
      *
-     * @param String $message
-     * @param Object|Array|String|Int ...$params
+     * @param string $message
+     * @param object|array|string|int ...$params
      */
     public static function error($message, ...$params)
     {
-        $message = L0gHelper::constructMessage(L0gConst::TYPE_ERROR, $message, $params);
+        $message = LogHelper::constructMessage(LogHelper::TYPE_ERROR, $message, $params);
+        \Log::error($message);
+    }
+
+    /**
+     * L0g::warning($message)
+     * call the self::constructMessage() method
+     *
+     * @param string $message
+     * @param object|array|string|int ...$params
+     */
+    public static function warning($message, ...$params)
+    {
+        $message = LogHelper::constructMessage(LogHelper::TYPE_ERROR, $message, $params);
         \Log::error($message);
     }
 
     /**
      * L0g::channel($channel)
-     * new instantiation of class L0gHelper
+     * new instantiation of class LogHelper
      *
-     * @param String $channel
+     * @param string $channel
      */
     public static function channel($channel)
     {
-        $rtn = new L0gHelper($channel);
+        $rtn = new LogHelper($channel);
 
         return $rtn;
     }

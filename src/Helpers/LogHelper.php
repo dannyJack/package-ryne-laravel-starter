@@ -2,10 +2,21 @@
 
 namespace Ryne\LaravelStarter\Helpers;
 
-use Ryne\LaravelStarter\Consts\L0gConst;
-
-class L0gHelper
+class LogHelper
 {
+    /*======================================================================
+    .* CONSTANTS
+    .*======================================================================*/
+
+    const DEBUGTRACE_CNT = 4;
+
+    const TYPE_INFO = 'info';
+    const TYPE_ERROR = 'error';
+
+    /*======================================================================
+    .* PROPERTIES
+    .*======================================================================*/
+
     private $channel = null;
 
     /*======================================================================
@@ -13,7 +24,7 @@ class L0gHelper
     .*======================================================================*/
 
     /**
-     * @param String $channel - Log channel to be used
+     * @param string $channel - Log channel to be used
      */
     public function __construct($channel)
     {
@@ -28,39 +39,39 @@ class L0gHelper
      * info($message)
      * call the out() method
      *
-     * @param String $message
-     * @param Object|Array|String|Int ...$params
+     * @param string $message
+     * @param object|array|string|int ...$params
      * @return void
      */
     public function info($message, ...$params)
     {
-        $message = self::constructMessage(L0gConst::TYPE_INFO, $message, $params);
-        $this->out(L0gConst::TYPE_INFO, $message);
+        $message = self::constructMessage(L0gHelper::TYPE_INFO, $message, $params);
+        $this->out(L0gHelper::TYPE_INFO, $message);
     }
 
     /**
      * error($message)
      * call the out() method
      *
-     * @param String $message
-     * @param Object|Array|String|Int ...$params
+     * @param string $message
+     * @param object|array|string|int ...$params
      */
     public function error($message, ...$params)
     {
-        $message = self::constructMessage(L0gConst::TYPE_ERROR, $message, $params);
-        $this->out(L0gConst::TYPE_ERROR, $message);
+        $message = self::constructMessage(L0gHelper::TYPE_ERROR, $message, $params);
+        $this->out(L0gHelper::TYPE_ERROR, $message);
     }
 
     /**
      * out($type, $message)
      * call the laravel Log method
-     * 
-     * @param String|L0gConst::TYPE_ $type - Log type
-     * @param String $message - message to be output
+     *
+     * @param string|L0gHelper::TYPE_ $type - Log type
+     * @param string $message - message to be output
      */
     public function out($type, $message)
     {
-        if ($type == L0gConst::TYPE_ERROR) {
+        if ($type == L0gHelper::TYPE_ERROR) {
             if (!empty($this->channel)) {
                 \Log::channel($this->channel)->error($message);
             } else {
@@ -84,9 +95,9 @@ class L0gHelper
      * construct message for information/error log
      *
      * @param L0gHelper::TYPE_ (String) $type
-     * @param String $message
-     * @param Array $params [title][code][user][otherDetails][traceCount][...]
-     * @return String $logMessage;
+     * @param string $message
+     * @param array $params [title][code][user][otherDetails][traceCount][...]
+     * @return string $logMessage;
      */
     public static function constructMessage($type, $message, $params = [])
     {

@@ -114,7 +114,7 @@ class ServiceProvider extends SP
         ];
 
         $this->pubModels = [
-            __DIR__ . '/defaults/app/Traits/Model/ModelTrait.php' => config_path('../app/Traits/Model/ModelTrait.php'),
+            __DIR__ . '/defaults/app/Traits/Models/ModelTrait.php' => config_path('../app/Traits/Models/ModelTrait.php'),
             __DIR__ . '/defaults/app/Models/Model.php' => config_path('../app/Models/Model.php'),
             __DIR__ . '/defaults/app/Models/ModelAuthenticatable.php' => config_path('../app/Models/ModelAuthenticatable.php'),
             __DIR__ . '/defaults/app/Models/ModelCompoships.php' => config_path('../app/Models/ModelCompoships.php')
